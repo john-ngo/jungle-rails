@@ -1,2 +1,12 @@
-<%= link_to 'Products: ' + @product_count.to_s, [:admin, :products], class: "link-primary" %>
-<p>Categories: <%= @category_count %></p>
+<section class="admin-products-index">
+
+  <header class="page-header">
+    <h1>Admin &raquo; Dashboard</h1>
+  </header>
+
+  <div>
+    <%= link_to 'Categories: ' + @category_count.to_s, [:admin, :categories], class: "link-primary" %>
+    <br>
+    <%= link_to 'Products: ' + @product_count.to_s, [:admin, :products], class: "link-primary" %>    
+  </div>
+</section>
