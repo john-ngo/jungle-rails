@@ -65,7 +65,7 @@ RSpec.describe User, type: :model do
       @user2 = User.new(
         first_name: 'John',
         last_name: 'Doe',
-        email: 'A@A.COM',
+        email: 'a@a.COM',
         password: '1234567890',
         password_confirmation: '1234567890'
       )
@@ -137,6 +137,53 @@ RSpec.describe User, type: :model do
       expect(@user.errors.full_messages).to include("Password confirmation doesn't match Password")
     end
 
+  end
+
+  describe '.authenticate_with_credentials' do
+    it "authenticates user with spaces in email" do
+      @user = User.new(
+        first_name: 'John',
+        last_name: 'Doe',
+        email: 'a@a.com',
+        password: '1234567890',
+        password_confirmation: '1234567890'
+      )
+      @user.save!
+
+      @user_login = User.authenticate_with_credentials('             a@a.com   ', '1234567890')
+
+      expect(@user_login.email).to eq('a@a.com')
+    end
+
+    it "authenticates user with email in upper case" do
+      @user = User.new(
+        first_name: 'John',
+        last_name: 'Doe',
+        email: 'a@a.com',
+        password: '1234567890',
+        password_confirmation: '1234567890'
+      )
+      @user.save!
+
+      @user_login = User.authenticate_with_credentials('A@A.COM', '1234567890')
+
+      expect(@user_login.email).to eq('a@a.com')
+    end
+
+    it "does not authenticate user with incorrect password" do
+      @user = User.new(
+        first_name: 'John',
+        last_name: 'Doe',
+        email: 'a@a.com',
+        password: '1234567890',
+        password_confirmation: '1234567890'
+      )
+      @user.save!
+
+      @user_login = User.authenticate_with_credentials('a@a.com', '0987654321')
+      
+      expect(@user_login).to be_nil
+    end
 
   end
 end
