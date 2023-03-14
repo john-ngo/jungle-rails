@@ -5,12 +5,11 @@ describe("Home", () => {
     cy.contains("Jungle");
   });
 
-  it("There is products on the page", () => {
+  it("contains a product", () => {
     cy.get(".products article").should("be.visible");
   });
   
-  it("There is 2 products on the page", () => {
+  it("contains 2 products", () => {
     cy.get(".products article").should("have.length", 2);
   });
-  
 });
