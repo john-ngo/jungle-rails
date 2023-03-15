@@ -1,6 +1,6 @@
 # Jungle
 
-A mini e-commerce application built with Rails 6.1 for purposes of teaching Rails by example.
+A mini e-commerce application built with Rails 6.1 for learning purposes.
 
 ## Setup
 
@@ -22,6 +22,20 @@ If Rails is complaining about authentication to the database, uncomment the user
 Use Credit Card # 4111 1111 1111 1111 for testing success scenarios.
 
 More information in their docs: <https://stripe.com/docs/testing#cards>
+
+## Final product
+
+Home page
+
+!["Home page"](https://github.com/john-ngo/jungle-rails/blob/master/docs/home.png)
+
+Cart
+
+!["Cart"](https://github.com/john-ngo/jungle-rails/blob/master/docs/cart.png)
+
+Order page
+
+!["Order page"](https://github.com/john-ngo/jungle-rails/blob/master/docs/order.png)
 
 ## Dependencies
 
